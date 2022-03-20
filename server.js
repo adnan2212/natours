@@ -35,7 +35,7 @@ process.on('unhandledRejection', (err) => {
   console.log('Unhandled rejection! 💥 Shutting down...');
   console.log(err.name, err.message);
   server.close(() => {
-    // 0 -> succes & 1 -> uncaught exception: all err or bugs that occur in synchronous code but are not handled anywhere
+    // 0 -> succes & 1 -> uncaught exception: all err or bugs that occur in synchronous code but are not handled anywhere.
     process.exit(1);
   });
 });
