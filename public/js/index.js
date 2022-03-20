@@ -19,7 +19,6 @@ if (logOutBtn) logOutBtn.addEventListener('click', logout);
 
 if (buttonToBookTour)
   buttonToBookTour.addEventListener('click', (e) => {
-    console.log('Alerted, from btn book tour.');
     e.target.textContent = 'Processing...';
     const { tourId } = e.currentTarget.dataset;
     // const { tourId } = e.target.dataset;
@@ -58,7 +57,6 @@ if (userDataForm)
     form.append('name', document.getElementById('name').value);
     form.append('email', document.getElementById('email').value);
     form.append('photo', document.getElementById('photo').files[0]);
-    console.log(form);
 
     updateSettings(form, 'data');
   });

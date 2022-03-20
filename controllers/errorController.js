@@ -9,7 +9,6 @@ const handleDuplicateFieldsDB = (err) => {
   // const value = err.message.match(/(["'])(?:(?=(\\?))\2.)*?\1/)[0];
   // const value = Object.values(err.keyValue)[0];
   const value = err.keyValue.name;
-  // console.log(value);
 
   const message = `Duplicate field value: ${value}. Please use another value.`;
   return new AppError(message, 400);
@@ -70,7 +69,6 @@ const sendErrorProd = (err, req, res) => {
   // B)RENDERED WEBSITE
   // A) Operational, trusted error: send message to client
   if (err.isOperational) {
-    console.log(err);
     return res.status(err.statusCode).render('error', {
       title: 'Something went wrong!',
       msg: err.message,
@@ -106,8 +104,6 @@ module.exports = (err, req, res, next) => {
     if (error.name === 'JsonWebTokenError') error = handleJWTError();
     if (error.name === 'TokenExpiredError') error = handleJWTExpiredError();
 
-    // console.log(err.message);
-    // console.log(error.message);
     sendErrorProd(error, req, res);
   }
 };
